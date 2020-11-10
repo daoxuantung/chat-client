@@ -1,0 +1,27 @@
+* {
+  font-size: 10px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.home {
+  display: flex;
+  height: 100vh;
+}
+
+.nav-item {
+  list-style-type: none;
+}
+
+.nav-link {
+  text-decoration: none;
+}
+
+.account-page {
+  height: 100vh;
+  background-color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

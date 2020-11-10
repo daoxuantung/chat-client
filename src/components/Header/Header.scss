@@ -1,0 +1,33 @@
+$bg: #28df99;
+$text-color: rgba(255, 255, 255, 0.8);
+$cf: #fff;
+
+.header {
+    margin: 0;
+    background-color: $cf;
+    flex-grow: 1;
+    max-width: 45rem;
+    display: flex;
+    flex-direction: column;
+
+    &_navbar {
+        border-right: 0.5px solid $text-color;
+    }
+
+    .navbar-brand {
+        padding: 1rem 2rem;
+        background-color: $bg;
+
+        &_link {
+            font-family: "Marck Script", cursive;
+            font-size: 3.2rem;
+            color: $cf;
+
+            img {
+                margin-right: 1rem;
+                position: relative;
+                top: 0.5rem;
+            }
+        }
+    }
+}
