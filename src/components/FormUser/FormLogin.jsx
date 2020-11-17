@@ -61,7 +61,7 @@ const FormLogin = ({ history, from }) => {
         if (user) {
             dispatch(getCurrentUser(user))
         }
-        history.replace(from);
+        history.replace('/');
     }
 
     return (

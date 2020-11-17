@@ -22,7 +22,7 @@ $cf: #fff;
     &_nav {
         @extend %flexBox;
         background-color: $bg;
-        padding: 1.01rem;
+        padding: 0.85rem;
     }
 
     .navbar-nav {
@@ -83,7 +83,7 @@ $cf: #fff;
 
     &_box {
         flex-grow: 1;
-        background-color: #f0f2f5;
+        background-color: #fff;
     }
 
     &_dropdown {

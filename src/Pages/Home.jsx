@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import { getCurrentUser } from '../actions/user';
-import BoxProfile from '../components/BoxProfile/BoxProfile';
 import Content from '../components/Content/Content';
 import Header from '../components/Header/Header';
 import authService from '../services/auth.service';
+import io from 'socket.io-client';
 
 
 const noficationSuccess = (text) => {
@@ -46,6 +46,13 @@ const Home = props => {
         }
         getUser();
 
+        const socket = io("http://localhost:8000", {
+            withCredentials: true,
+            query: {
+                token: localStorage.getItem('token')
+            }
+        });
+
     }, [dispatch, loggedIn, token])
 
     return (
@@ -63,7 +70,6 @@ const Home = props => {
                 draggable
                 pauseOnHover={false}
             />
-            <BoxProfile />
         </div>
     );
 };

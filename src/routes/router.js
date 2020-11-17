@@ -40,7 +40,7 @@ const PrivateRoute = ({ children }) => {
                 ) : (
                         <Redirect
                             to={{
-                                pathname: "/",
+                                pathname: "/home",
                                 state: { from: location }
                             }}
                         />
@@ -56,13 +56,16 @@ const router = () => {
         <Suspense fallback={<div></div>}>
             <BrowserRouter>
                 <Switch>
-                    <PrivateHomePage exact path="/">
+                    <Route exact path="/">
+                        <Redirect to="/home" />
+                    </Route>
+                    <PrivateHomePage path="/home">
                         <Home />
                     </PrivateHomePage>
-                    <PrivateRoute exact path="/login">
+                    <PrivateRoute path="/login">
                         <Login />
                     </PrivateRoute>
-                    <PrivateRoute exact path="/register">
+                    <PrivateRoute path="/register">
                         <Register />
                     </PrivateRoute>
                 </Switch>

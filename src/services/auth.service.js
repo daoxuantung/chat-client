@@ -17,10 +17,6 @@ const login = (email, password) => {
     })
 };
 
-const logout = () => {
-    localStorage.removeItem("user");
-};
-
 const getUser = (token) => {
     return axios.post(API_URL, {
 
@@ -35,6 +31,5 @@ const getUser = (token) => {
 export default {
     register,
     login,
-    logout,
-    getUser,
+    getUser
 };
