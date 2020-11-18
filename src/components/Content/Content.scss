@@ -83,7 +83,7 @@ $cf: #fff;
 
     &_box {
         flex-grow: 1;
-        background-color: #fff;
+        background-color: #f0f2f5;
     }
 
     &_dropdown {
@@ -98,7 +98,7 @@ $cf: #fff;
         visibility: hidden;
         opacity: 0;
         transition: visibility 0.1s ease-in, opacity 0.1s ease-in;
-        z-index: 1000;
+        z-index: 100000;
 
         &::after {
             content: "";

@@ -10,11 +10,17 @@ import BoxFavorite from '../BoxFavorite/BoxFavorite';
 import BoxArchived from '../BoxArchived/BoxArchived';
 
 const Content = ({ user, history, from }) => {
-    const isShow = useSelector(state => state.dropdownReducer);
+    const isShow = useSelector(state => state.dropdownReducer.showMenu);
     const dispatch = useDispatch();
     const handleShowDropdown = () => {
 
         dispatch(showMenu(!isShow))
+    }
+
+    const handleToProfile = () => {
+
+        dispatch(showMenu(!isShow))
+        history.push('/home/profile');
     }
 
     const logOut = () => {
@@ -48,9 +54,9 @@ const Content = ({ user, history, from }) => {
                         <img src={user.avatarUrl} alt="" />
                     </div>
                     <div className={classNames('content_dropdown', { show: isShow })}>
-                        <div className="content_button">
+                        <div className="content_button" onClick={() => handleToProfile()}>
                             Profile
-                            </div>
+                        </div>
                         <div className="content_line"></div>
                         <div className="content_button content_button--red" onClick={() => logOut()}>
                             Log out
