@@ -2,13 +2,12 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
+import { showMenu } from '../actions/dropdownMenu';
 import { getCurrentUser } from '../actions/user';
+import BoxEdit from '../components/BoxEdit/BoxEdit';
 import Content from '../components/Content/Content';
 import Header from '../components/Header/Header';
 import authService from '../services/auth.service';
-import io from 'socket.io-client';
-import BoxEdit from '../components/BoxEdit/BoxEdit';
-
 
 const noficationSuccess = (text) => {
     toast.success(text, {
@@ -22,7 +21,7 @@ const noficationSuccess = (text) => {
     });
 }
 
-const Home = props => {
+const Home = ({ socket }) => {
     const loggedIn = useSelector(state => state.userReducer.loggedIn);
     const dispatch = useDispatch();
     const token = localStorage.getItem('token');
@@ -33,37 +32,32 @@ const Home = props => {
 
     const { from } = location.state || { from: { pathname: "/" } };
 
+    const handleHidden = () => {
+        dispatch(showMenu(false));
+    }
+
+
+    useEffect(() => {
+        const getUser = async () => {
+            const user = (await authService.getUser(token)).data;
+            if (user) {
+                dispatch(getCurrentUser(user))
+            }
+        }
+
+        getUser();
+    }, [dispatch, token])
+
     useEffect(() => {
         if (loggedIn) noficationSuccess('Login Successfully!');
 
-        const getUser = async () => {
-            if (token) {
-                const { user } = (await authService.getUser(token)).data;
-
-                if (user) {
-                    dispatch(getCurrentUser(user))
-                }
-            }
-        }
-        getUser();
-
-    }, [dispatch, loggedIn, token])
+    }, [loggedIn])
 
     return (
         user && <div className="home">
-            <Header />
-            <Content user={user} history={history} from={from} />
-            <ToastContainer
-                position="top-right"
-                autoClose={2000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover={false}
-            />
+            <Header handleHidden={handleHidden} />
+            <Content history={history} from={from} handleHidden={handleHidden} socket={socket} />
+            <ToastContainer />
             <BoxEdit user={user} />
         </div>
     );

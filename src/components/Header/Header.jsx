@@ -5,9 +5,9 @@ import './Header.scss';
 
 const { Icon } = Images;
 
-const Header = props => {
+const Header = ({ handleHidden }) => {
     return (
-        <header className="header">
+        <header className="header" onClick={() => handleHidden()}>
             <div className="header_navbar">
                 <div className="navbar-brand">
                     <a className="navbar-brand_link nav-link" href="/home">

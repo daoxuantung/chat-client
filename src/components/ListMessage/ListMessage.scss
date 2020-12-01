@@ -6,6 +6,8 @@ $b: rgba(255, 255, 255, 0.5);
 
     &_header {
         padding-bottom: 2.5rem;
+        display: flex;
+        flex-direction: column;
     }
 
     &_title {
@@ -22,6 +24,7 @@ $b: rgba(255, 255, 255, 0.5);
         border-radius: 5px;
         border: 2px solid #ddd;
         overflow: hidden;
+        margin: 1rem 0;
 
         input {
             font-size: 1.4rem;

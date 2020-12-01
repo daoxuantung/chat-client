@@ -3,7 +3,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
-import { getCurrentUser, loginUser } from '../../actions/user';
+import { loginUser } from '../../actions/user';
 import Images from '../../constants/image';
 import AuthService from "../../services/auth.service";
 import './Form.scss';
@@ -14,7 +14,7 @@ const { Logo } = Images;
 const noficationError = (text) => {
     toast.error(text, {
         position: "top-right",
-        autoClose: 2000,
+        autoClose: 1500,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: false,
@@ -40,7 +40,7 @@ const validate = (values) => {
     return errors;
 };
 
-const FormLogin = ({ history, from }) => {
+const FormLogin = ({ history }) => {
     const dispatch = useDispatch();
     const handleFormLogin = async (values, actions) => {
         const { email, password } = values;
@@ -57,10 +57,6 @@ const FormLogin = ({ history, from }) => {
         }
         localStorage.setItem("token", token);
         dispatch(loginUser(true));
-        const { user } = (await AuthService.getUser(token)).data;
-        if (user) {
-            dispatch(getCurrentUser(user))
-        }
         history.replace('/');
     }
 
@@ -104,17 +100,7 @@ const FormLogin = ({ history, from }) => {
             <hr className="form_space" />
             <p className="form_text">Don't have an account?</p>
             <Link className="nav-link form_link" to="/register">Register now!</Link>
-            <ToastContainer
-                position="top-right"
-                autoClose={2000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover={false}
-            />
+            <ToastContainer />
         </div>
     );
 };

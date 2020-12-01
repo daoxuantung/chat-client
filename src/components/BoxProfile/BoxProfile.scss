@@ -8,11 +8,12 @@ $color: #fd397a;
     bottom: 0;
     width: 35rem;
     background-color: $bg-color;
-    padding: 0 2.5rem;
     z-index: 1000;
+    display: flex;
+    flex-direction: column;
 
     &_header {
-        padding: 2.5rem 0;
+        padding: 2.5rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -39,6 +40,15 @@ $color: #fd397a;
             background: #eee;
         }
 
+        &--icon {
+            display: none;
+            padding: 0.75rem 1rem;
+        }
+
+        &--edit {
+            display: none;
+        }
+
         &--danger {
             color: $bg-color;
             background-color: $color;
@@ -55,7 +65,8 @@ $color: #fd397a;
         align-items: center;
         overflow-y: scroll;
         outline: none;
-        height: 100vh;
+        flex-grow: 1;
+        padding: 0 2.5rem;
 
         &::-webkit-scrollbar-track {
             background-color: #fff;
@@ -69,6 +80,14 @@ $color: #fd397a;
         &::-webkit-scrollbar-thumb {
             border-radius: 10px;
             background-color: #ddd;
+        }
+    }
+
+    &_group {
+        display: flex;
+
+        &-btn {
+            display: none;
         }
     }
 
@@ -88,13 +107,14 @@ $color: #fd397a;
     }
 
     &_list {
-        margin: 5rem 0;
+        margin: 3rem 0 0 0;
+        padding: 5rem 0;
         width: 100%;
     }
 
     &_item {
         list-style-type: none;
-        margin-bottom: 0.5rem;
+        margin-bottom: 1rem;
 
         &-name {
             font-size: 1.4rem;
@@ -134,4 +154,8 @@ $color: #fd397a;
         @extend %block;
         width: 2rem !important;
     }
+}
+
+.btnShow {
+    display: inline-block;
 }

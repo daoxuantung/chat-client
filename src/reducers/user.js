@@ -14,9 +14,8 @@ export const userReducer = (state = initUser, action) => {
         case LOGIN_REQUEST:
             return { ...state, loggedIn: action.payload };
         case GET_REQUEST:
-            const { name, email, avatarUrl, aboutMe, phoneNumber, webUrl } = action.payload;
-            return { ...state, user: { name, email, avatarUrl, aboutMe, phoneNumber, webUrl } };
+            return { ...state, user: action.payload.user };
         default:
-            return state
+            return state;
     }
 }

@@ -3,10 +3,8 @@ const userConstants = {
     LOGIN_REQUEST: 'LOGIN_REQUEST',
     LOGOUT: 'LOGOUT',
     GET_REQUEST: 'GET_REQUEST',
-
-    DELETE_REQUEST: 'DELETE_REQUEST',
-    DELETE_SUCCESS: 'DELETE_SUCCESS',
-    DELETE_FAILURE: 'DELETE_FAILURE'
+    GET_USER: 'GET_USER',
+    CHECK_USER: 'CHECK_USER', 
 };
 
 export default userConstants;

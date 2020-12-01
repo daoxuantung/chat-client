@@ -14,7 +14,7 @@ const { Logo } = Images;
 const noficationError = (text) => {
     toast.error(text, {
         position: "top-right",
-        autoClose: 2000,
+        autoClose: 1500,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: false,
@@ -132,17 +132,7 @@ const FormRegister = ({ history, from }) => {
             <hr className="form_space" />
             <p className="form_text">Already have an account?</p>
             <Link className="nav-link form_link" to="/login">Sign in!</Link>
-            <ToastContainer
-                position="top-right"
-                autoClose={2000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover={false}
-            />
+            <ToastContainer />
         </div >
     );
 };
