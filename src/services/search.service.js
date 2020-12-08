@@ -47,6 +47,7 @@ const deleteFriend = (token, user) => {
 }
 
 
+
 export default {
     addRequest,
     deleteRequest,

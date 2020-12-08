@@ -1,11 +1,19 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { getFriend } from '../../actions/request';
 import './Overlay.scss';
 
 const Overlay = ({ history }) => {
-    return (
-        <div className="overlay" onClick={() => history.push('/dashboard')}>
+    const dispatch = useDispatch();
+    const handleClose = () => {
+        dispatch(getFriend(null));
+        history.push('/dashboard')
+    }
 
-        </div>
+    return (
+        <div className="overlay" onClick={() => handleClose()}>
+
+        </div >
     );
 };
 

@@ -7,6 +7,14 @@ $bg: #28df99;
 $text-color: rgba(255, 255, 255, 0.8);
 $cf: #fff;
 
+%icon {
+    color: $bg;
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+}
+
 %text {
     font-size: 1.4rem;
     color: $text-color;
@@ -23,6 +31,7 @@ $cf: #fff;
         @extend %flexBox;
         background-color: $bg;
         padding: 0 0.85rem;
+        align-items: center;
     }
 
     .navbar-nav {
@@ -57,20 +66,25 @@ $cf: #fff;
         @extend %flexBox;
         justify-content: flex-end;
         align-items: center;
-        flex-grow: 0.5;
-        padding-right: 1rem;
         position: relative;
+        padding: 0.3rem;
+        border: 1px solid transparent;
+        border-radius: 25px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: 0.1s ease-out;
+
+        &:hover {
+            border-color: #fff;
+        }
 
         &-name {
             @extend %text;
             color: #fff;
-            user-select: none;
-            padding-right: 1rem;
-            text-align: end;
-            cursor: pointer;
+            margin: 0;
             height: 100%;
-            display: flex;
-            align-items: center;
+            width: 5rem;
+            text-align: center;
         }
 
         &-space {
@@ -79,11 +93,10 @@ $cf: #fff;
         }
 
         &-avatar {
-            width: 3.6rem;
-            height: 3.6rem;
+            width: 2.6rem;
+            height: 2.6rem;
             border-radius: 50%;
             background-color: #fff;
-            cursor: pointer;
             overflow: hidden;
 
             img {
@@ -105,8 +118,8 @@ $cf: #fff;
         background-color: #fff;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
         position: absolute;
-        bottom: -8.5rem;
-        right: 1rem;
+        bottom: -9rem;
+        right: 0;
         visibility: hidden;
         opacity: 0;
         transition: visibility 0.1s ease-in, opacity 0.1s ease-in;
@@ -146,6 +159,34 @@ $cf: #fff;
         width: 100%;
         height: 0;
         border-bottom: 1px solid #efefef;
+    }
+
+    &_menu {
+        width: 3.6rem;
+        height: 3.6rem;
+        border-radius: 50%;
+        background-color: #fff;
+        position: relative;
+        cursor: pointer;
+        margin-left: 1rem;
+
+        .fa-sort-down {
+            @extend %icon;
+            font-size: 2rem;
+        }
+
+        .fa-bell {
+            @extend %icon;
+            font-size: 1.6rem;
+            top: 50%;
+        }
+    }
+
+    &_notification {
+        width: 29.5rem;
+        height: 30rem;
+        top: 4.5rem;
+        right: 0;
     }
 }
 

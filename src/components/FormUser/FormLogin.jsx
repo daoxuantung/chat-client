@@ -55,8 +55,8 @@ const FormLogin = ({ history }) => {
             })
             return;
         }
-        localStorage.setItem("token", token);
         dispatch(loginUser(true));
+        localStorage.setItem("token", token);
         history.replace('/');
     }
 

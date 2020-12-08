@@ -20,7 +20,6 @@ $b: rgba(255, 255, 255, 0.5);
     }
 
     &_input {
-        height: 4rem;
         border-radius: 5px;
         border: 2px solid #ddd;
         overflow: hidden;
@@ -29,7 +28,7 @@ $b: rgba(255, 255, 255, 0.5);
         input {
             font-size: 1.4rem;
             width: 100%;
-            height: inherit;
+            height: 4rem;
             border-radius: 0;
             padding: 0 1.5em;
             border: none;

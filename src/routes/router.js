@@ -9,7 +9,7 @@ import Login from '../Pages/Login';
 import Register from '../Pages/Register';
 import PrivateRouter from './privateRouter';
 
-const Router = ({ socket }) => {
+const Router = () => {
     return (
         <BrowserRouter>
             <Switch>
@@ -17,7 +17,7 @@ const Router = ({ socket }) => {
                     <Redirect from="/" to="/dashboard" />
                 </PrivateRouter>
                 <PrivateRouter path="/dashboard">
-                    <Home socket={socket} />
+                    <Home />
                 </PrivateRouter>
                 <Route exact path="/login">
                     <Login />

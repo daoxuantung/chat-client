@@ -3,8 +3,8 @@ const userConstants = {
     LOGIN_REQUEST: 'LOGIN_REQUEST',
     LOGOUT: 'LOGOUT',
     GET_REQUEST: 'GET_REQUEST',
-    GET_USER: 'GET_USER',
-    CHECK_USER: 'CHECK_USER', 
+    GET_USERS: 'GET_USERS',
+    CHECK_USER: 'CHECK_USER',
 };
 
 export default userConstants;

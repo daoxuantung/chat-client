@@ -1,23 +1,17 @@
 import requestConstants from '../constants/request';
-const { CHECK_REQUEST, SEND_REQUEST, RECEIVE_REQUSET, GET_FRIEND } = requestConstants;
+const { GET_FRIEND, GET_USER } = requestConstants;
 
 const initUser = {
-    isFriend: false,
-    sended: false,
-    received: false,
-    user: null
+    user: null,
+    friendsList: []
 }
 
 export const friendReducer = (state = initUser, action) => {
     switch (action.type) {
-        case CHECK_REQUEST:
-            return { ...state, isFriend: action.payload };
-        case SEND_REQUEST:
-            return { ...state, sended: action.payload };
-        case RECEIVE_REQUSET:
-            return { ...state, received: action.payload };
-        case GET_FRIEND:
+        case GET_USER:
             return { ...state, user: action.payload.user }
+        case GET_FRIEND:
+            return { ...state, friendsList: action.payload }
         default:
             return state;
     }

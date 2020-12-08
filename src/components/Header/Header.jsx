@@ -5,12 +5,12 @@ import './Header.scss';
 
 const { Icon } = Images;
 
-const Header = ({ handleHidden }) => {
+const Header = () => {
     return (
-        <header className="header" onClick={() => handleHidden()}>
+        <header className="header">
             <div className="header_navbar">
                 <div className="navbar-brand">
-                    <a className="navbar-brand_link nav-link" href="/home">
+                    <a className="navbar-brand_link nav-link" href="/">
                         <img src={Icon} width="24" height="24" alt="" />
                         ChitChat
                 </a>

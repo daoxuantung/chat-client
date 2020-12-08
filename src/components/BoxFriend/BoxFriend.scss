@@ -1,5 +1,90 @@
+$bg: #28df99;
+
 .friends {
     &_input {
-        margin: 1rem 2.5rem !important;
+        margin: 2.5rem !important;
+    }
+
+    &_body {
+        padding: {
+            top: 2.5rem;
+            right: 2rem;
+            left: 2.5rem;
+            bottom: 2.5rem;
+        }
+        overflow-y: scroll;
+        flex-grow: 1;
+
+        &::-webkit-scrollbar-track {
+            background-color: #fff;
+        }
+
+        &::-webkit-scrollbar {
+            width: 6px;
+            height: 5px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background-color: #ddd;
+        }
+    }
+
+    &_number {
+        font-size: 1.4rem;
+        color: #333;
+    }
+
+    &_list {
+        padding: 2rem 0;
+    }
+
+    &_item {
+        cursor: pointer;
+    }
+
+    &_input {
+        overflow: visible !important;
+    }
+
+    &_text {
+        font-size: 1.4rem;
+        text-align: center;
+    }
+}
+
+.friend {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 1rem;
+    padding: 1rem 0;
+
+    &_avatar {
+        width: 3.6rem;
+        height: 3.6rem;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+
+    &_name {
+        flex-grow: 1;
+        margin: auto 1.5rem;
+        font-size: 1.6rem;
+        font-weight: bold;
+    }
+    &_job {
+        font-size: 1.4rem;
+        font-weight: normal;
+        color: #888;
+    }
+
+    &_icon {
+        color: $bg;
+        display: none;
+    }
+
+    &:hover &_icon {
+        display: block;
     }
 }

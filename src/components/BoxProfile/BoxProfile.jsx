@@ -2,12 +2,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import { getFriend } from '../../actions/request';
+import { getUser } from '../../actions/request';
 import authService from '../../services/auth.service';
 import './BoxProfile.scss';
 import Profile from './Profile';
 
-const BoxProfile = ({ socket }) => {
+const BoxProfile = ({ currentUser }) => {
     const history = useHistory();
     const { userID } = useParams();
     const dispatch = useDispatch();
@@ -15,21 +15,20 @@ const BoxProfile = ({ socket }) => {
     const user = useSelector(state => state.friendReducer.user);
 
     useEffect(() => {
-        const getUser = async () => {
+        const fetchApi = async () => {
             const userMatched = (await authService.getUser(token, userID)).data;
             if (userMatched) {
-                dispatch(getFriend(userMatched))
+                dispatch(getUser(userMatched))
             }
         }
 
-        getUser();
-
-
-    }, [dispatch, token, userID])
+        fetchApi();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [userID])
 
     return (
         user && <>
-            <Profile history={history} user={user} socket={socket} param={userID} token={token} />
+            <Profile history={history} user={user} param={userID} token={token} />
         </>
     );
 };

@@ -2,9 +2,9 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, useLocation } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
-import { showMenu } from '../actions/dropdownMenu';
 import { getCurrentUser } from '../actions/user';
 import BoxEdit from '../components/BoxEdit/BoxEdit';
+import BoxSearch from '../components/BoxSearch/BoxSearch';
 import Content from '../components/Content/Content';
 import Header from '../components/Header/Header';
 import authService from '../services/auth.service';
@@ -21,7 +21,7 @@ const noficationSuccess = (text) => {
     });
 }
 
-const Home = ({ socket }) => {
+const Home = () => {
     const loggedIn = useSelector(state => state.userReducer.loggedIn);
     const dispatch = useDispatch();
     const token = localStorage.getItem('token');
@@ -32,11 +32,6 @@ const Home = ({ socket }) => {
 
     const { from } = location.state || { from: { pathname: "/" } };
 
-    const handleHidden = () => {
-        dispatch(showMenu(false));
-    }
-
-
     useEffect(() => {
         const getUser = async () => {
             const user = (await authService.getUser(token)).data;
@@ -46,7 +41,8 @@ const Home = ({ socket }) => {
         }
 
         getUser();
-    }, [dispatch, token])
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     useEffect(() => {
         if (loggedIn) noficationSuccess('Login Successfully!');
@@ -55,10 +51,11 @@ const Home = ({ socket }) => {
 
     return (
         user && <div className="home">
-            <Header handleHidden={handleHidden} />
-            <Content history={history} from={from} handleHidden={handleHidden} socket={socket} />
+            <Header />
+            <Content history={history} from={from} />
             <ToastContainer />
             <BoxEdit user={user} />
+            <BoxSearch user={user} />
         </div>
     );
 };

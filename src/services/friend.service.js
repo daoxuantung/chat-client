@@ -46,10 +46,21 @@ const deleteFriend = (token, user) => {
     })
 }
 
+const getFriends = (token, user) => {
+    return axios.post(API_URL + "friends", {
+        user
+    }, {
+        headers: {
+            'Authorization': token,
+            'Content-Type': 'application/json'
+        },
+    })
+}
 
 export default {
     addRequest,
     deleteRequest,
     acceptRequest,
-    deleteFriend
+    deleteFriend,
+    getFriends
 };

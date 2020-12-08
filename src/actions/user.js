@@ -1,5 +1,5 @@
 import userConstants from '../constants/user.constant';
-const { REGISTER_REQUEST, LOGIN_REQUEST, GET_REQUEST } = userConstants;
+const { REGISTER_REQUEST, LOGIN_REQUEST, GET_REQUEST, GET_USERS } = userConstants;
 
 
 export const registerUser = (user) => {
@@ -20,5 +20,12 @@ export const getCurrentUser = (user) => {
     return {
         type: GET_REQUEST,
         payload: user
+    }
+}
+
+export const getUsers = (users) => {
+    return {
+        type: GET_USERS,
+        payload: users
     }
 }

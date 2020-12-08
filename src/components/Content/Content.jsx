@@ -3,11 +3,11 @@ import './Content.scss';
 import ContentBox from './ContentBox';
 import ContentNav from './ContentNav';
 
-const Content = ({ history, from, handleHidden, socket }) => {
+const Content = ({ history, from }) => {
     return (
         <section className="content">
-            <ContentNav history={history} from={from} handleHidden={handleHidden} socket={socket} />
-            <div className="content_box" onClick={() => handleHidden()}>
+            <ContentNav history={history} from={from} />
+            <div className="content_box">
                 <ContentBox />
             </div>
         </section >
