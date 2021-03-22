@@ -3,7 +3,7 @@ import Images from '../../constants/image';
 import ListMessage from '../ListMessage/ListMessage';
 import './Header.scss';
 
-const { Icon } = Images;
+const { Logo } = Images;
 
 const Header = () => {
     return (
@@ -11,7 +11,7 @@ const Header = () => {
             <div className="header_navbar">
                 <div className="navbar-brand">
                     <a className="navbar-brand_link nav-link" href="/">
-                        <img src={Icon} width="24" height="24" alt="" />
+                        <img src={Logo} width="24" height="24" alt="" />
                         ChitChat
                 </a>
                 </div>

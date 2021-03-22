@@ -1,17 +1,17 @@
-$bg: #28df99;
+$bg: #fff;
 $text-color: rgba(255, 255, 255, 0.8);
-$cf: #fff;
+$cf: #7269ef;
 
 .header {
     margin: 0;
-    background-color: $cf;
     flex-grow: 1;
-    max-width: 45rem;
+    max-width: 35rem;
     display: flex;
     flex-direction: column;
 
     &_navbar {
         border-right: 0.5px solid $text-color;
+        border-bottom: 1px solid #f0eff5;
     }
 
     .navbar-brand {
@@ -26,7 +26,7 @@ $cf: #fff;
             img {
                 margin-right: 1rem;
                 position: relative;
-                top: 0.5rem;
+                top: 0.2rem;
             }
         }
     }

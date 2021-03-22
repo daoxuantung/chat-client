@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import 'react-toastify/dist/ReactToastify.css';
+import 'remixicon/fonts/remixicon.css';
 import store from '././helpers/store';
 import App from './App';
 import './index.scss';

@@ -6,11 +6,11 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.2);
     z-index: 888;
 
     &--top {
         top: 0;
         z-index: 2000;
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
     }
 }

@@ -1,17 +1,17 @@
-import { faTimes, faUserPlus } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
 import React, { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { showSearchForm } from '../../actions/dropdownMenu';
-import userService from '../../services/searchUser.service';
-import OverlayForm from '../Overlay/OverlayForm';
-import Item from './Item';
-import './BoxSearch.scss';
 import { getUsers } from '../../actions/user';
+import userService from '../../services/searchUser.service';
+import Node from '../Node/Node';
+import OverlayForm from '../Overlay/OverlayForm';
+import './BoxSearch.scss';
+import Item from './Item';
 
-const BoxSearch = ({ user }) => {
+const BoxSearch = () => {
     const isShow = useSelector(state => state.dropdownReducer.showSearchForm);
+    const user = useSelector(state => state.userReducer.user);
     const users = useSelector(state => state.userReducer.listUsers);
     const dispatch = useDispatch();
     const inputEl = useRef();
@@ -20,7 +20,8 @@ const BoxSearch = ({ user }) => {
     const handleCloseForm = (e) => {
         dispatch(showSearchForm(false));
         inputEl.current.value = '';
-        dispatch(getUsers(null))
+        setError('');
+        dispatch(getUsers(null));
     }
 
     const handleSearchForm = async (e) => {
@@ -39,11 +40,12 @@ const BoxSearch = ({ user }) => {
             <div className="edit_box search_box">
                 <h2 className="edit_title profile_title">
                     <div className="edit_icon">
-                        <FontAwesomeIcon icon={faUserPlus} size="2x" />
+                        <i className="ri-edit-line ri-3x"></i>
                     </div>
-                    Add Friends
-                    <div className="edit_btn" onClick={() => handleCloseForm()}>
-                        <FontAwesomeIcon icon={faTimes} size="3x" />
+                    Edit profile
+                    <div className="profile_btn edit_btn profile_btn--danger" onClick={() => handleCloseForm()}>
+                        <i className="ri-close-line ri-2x"></i>
+                        <Node text="Close" />
                     </div>
                 </h2>
                 <div className="list-message_input friends_input">
@@ -58,8 +60,8 @@ const BoxSearch = ({ user }) => {
                                 </li>
                             )
                         }
-                        {text.length > 0 && <div className="search_text">{text}</div>}
                     </ul>
+                    {text.length > 0 && <div className="search_text">{text}</div>}
                 </div>
             </div>
             <OverlayForm handleCloseForm={handleCloseForm} />

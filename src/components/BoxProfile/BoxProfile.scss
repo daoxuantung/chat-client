@@ -1,5 +1,5 @@
-$bg-color: #fff;
-$color: #fd397a;
+$bg-color: #f5f7fb;
+$color: #7269ef;
 
 .profile {
     position: fixed;
@@ -11,6 +11,8 @@ $color: #fd397a;
     z-index: 1000;
     display: flex;
     flex-direction: column;
+    animation: move 0.5s forwards;
+    box-shadow: -1px 2px 5px rgba(15, 34, 58, 0.12);
 
     &_header {
         padding: 2.5rem;
@@ -25,19 +27,23 @@ $color: #fd397a;
     }
 
     &_btn {
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         text-align: center;
-        padding: 0.75rem 1.25rem;
         border: 1px solid #efefef;
-        background: none;
+        background: #fff;
         border-radius: 10px;
         margin-left: 1rem;
+        width: 4rem;
+        height: 4rem;
         cursor: pointer;
         outline: none;
         transition: 0.2s ease-in-out;
+        position: relative;
 
-        &:hover {
-            background: #eee;
+        &:hover .node {
+            display: block;
         }
 
         &--icon {
@@ -47,15 +53,19 @@ $color: #fd397a;
 
         &--edit {
             display: none;
+
+            &:hover {
+                background-color: #eee;
+            }
         }
 
         &--danger {
-            color: $bg-color;
+            color: #fff;
             background-color: $color;
+        }
 
-            &:hover {
-                background-color: #df1b5c;
-            }
+        &:hover {
+            opacity: 0.8;
         }
     }
 
@@ -68,10 +78,6 @@ $color: #fd397a;
         flex-grow: 1;
         padding: 0 2.5rem;
 
-        &::-webkit-scrollbar-track {
-            background-color: #fff;
-        }
-
         &::-webkit-scrollbar {
             width: 6px;
             height: 5px;
@@ -80,6 +86,10 @@ $color: #fd397a;
         &::-webkit-scrollbar-thumb {
             border-radius: 10px;
             background-color: #ddd;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background: #ccc;
         }
     }
 
@@ -98,7 +108,7 @@ $color: #fd397a;
 
         img {
             border-radius: 50%;
-            border: 1px solid #ddd;
+            border: 1px solid transparent;
         }
     }
 
@@ -107,19 +117,27 @@ $color: #fd397a;
     }
 
     &_list {
-        margin: 3rem 0 0 0;
-        padding: 5rem 0;
+        margin: 0;
+        padding: 2rem 0;
         width: 100%;
+        background-color: #fff;
+    }
+
+    &_sayHi {
+        font-size: 1.4rem;
+        margin: 3rem 0;
+        color: #6c757d;
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
     }
 
     &_item {
         list-style-type: none;
-        margin-bottom: 1rem;
-
+        padding: 0 2rem;
         &-name {
             font-size: 1.4rem;
             font-weight: bold;
-            margin-bottom: 1rem;
         }
 
         &-content {
@@ -128,14 +146,41 @@ $color: #fd397a;
 
             &--hidden {
                 width: 100%;
-                height: 2rem;
+                margin-bottom: 5rem;
                 border: none;
             }
         }
 
         &-link {
             text-decoration: none;
-            color: #28df99;
+            color: $color;
+            font-size: 1.4rem;
+        }
+    }
+
+    &_item + &_item {
+        margin-top: 2rem;
+    }
+
+    &_box {
+        border: 1px solid rgb(240, 239, 245);
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        margin-bottom: 2.5rem;
+        border-radius: 5px;
+
+        &-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            padding: 1rem 2rem;
+
+            i {
+                margin-right: 0.5rem;
+            }
         }
     }
 }
@@ -144,18 +189,30 @@ $color: #fd397a;
     display: block;
 }
 
-.fa {
-    &-pencil-alt {
-        @extend %block;
-        color: #333;
+.btnShow {
+    display: inline-flex;
+}
+
+.profileIsShow {
+    animation: fadeOut 0.3s forwards;
+}
+
+@keyframes move {
+    from {
+        transform: translateX(35rem);
     }
 
-    &-times {
-        @extend %block;
-        width: 2rem !important;
+    to {
+        transform: translateX(0);
     }
 }
 
-.btnShow {
-    display: inline-block;
+@keyframes fadeOut {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(35rem);
+    }
 }

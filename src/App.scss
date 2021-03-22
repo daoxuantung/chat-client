@@ -16,6 +16,10 @@
 
 .nav-link {
   text-decoration: none;
+
+  &:active {
+    color: #343a40;
+  }
 }
 
 .account-page {

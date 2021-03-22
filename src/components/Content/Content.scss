@@ -3,9 +3,9 @@
     flex-wrap: nowrap;
 }
 
-$bg: #28df99;
+$bg: #fff;
 $text-color: rgba(255, 255, 255, 0.8);
-$cf: #fff;
+$cf: #7269ef;
 
 %icon {
     color: $bg;
@@ -17,7 +17,6 @@ $cf: #fff;
 
 %text {
     font-size: 1.4rem;
-    color: $text-color;
 }
 
 .content {
@@ -30,8 +29,9 @@ $cf: #fff;
     &_nav {
         @extend %flexBox;
         background-color: $bg;
-        padding: 0 0.85rem;
         align-items: center;
+        border-bottom: 1px solid #f0eff5;
+        box-shadow: 4px 0.5px 2px rgba(15, 34, 58, 0.12);
     }
 
     .navbar-nav {
@@ -40,63 +40,39 @@ $cf: #fff;
         align-items: center;
         flex-grow: 2;
         margin: 0;
-
         &_item {
             padding: 0;
-            margin: 0 1.2rem;
+            margin: 0.4rem 2rem;
+            position: relative;
+
+            &:hover .navbar-nav_link {
+                background-color: #f7f7ff;
+            }
+
+            &:hover .node {
+                display: block;
+            }
         }
 
         &_link {
             @extend %text;
             transition: all 0.2s ease-in-out 0s;
-            border-bottom: 2px solid #28df99;
             background: none;
             outline: none;
             cursor: pointer;
-            padding: 1.9rem 1.2rem;
+            padding: 1.6rem;
             display: block;
-
-            &:hover {
-                color: $cf;
-            }
+            border-radius: 10px;
+            color: #878a92;
         }
     }
 
     &_user {
-        @extend %flexBox;
-        justify-content: flex-end;
-        align-items: center;
-        position: relative;
-        padding: 0.3rem;
-        border: 1px solid transparent;
-        border-radius: 25px;
-        cursor: pointer;
-        text-decoration: none;
-        transition: 0.1s ease-out;
-
-        &:hover {
-            border-color: #fff;
-        }
-
-        &-name {
-            @extend %text;
-            color: #fff;
-            margin: 0;
-            height: 100%;
-            width: 5rem;
-            text-align: center;
-        }
-
-        &-space {
-            flex-grow: 1;
-            height: 100%;
-        }
-
         &-avatar {
-            width: 2.6rem;
-            height: 2.6rem;
-            border-radius: 50%;
             background-color: #fff;
+            height: 3.6rem;
+            width: 3.6rem;
+            border-radius: 50%;
             overflow: hidden;
 
             img {
@@ -108,49 +84,38 @@ $cf: #fff;
 
     &_box {
         flex-grow: 1;
-        background-color: #f0f2f5;
     }
 
     &_dropdown {
-        width: 15rem;
+        min-width: 15rem;
         padding: 0.5rem 0;
-        border-radius: 0.5rem;
+        border-radius: 0.25rem;
         background-color: #fff;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
         position: absolute;
-        bottom: -9rem;
         right: 0;
-        visibility: hidden;
-        opacity: 0;
-        transition: visibility 0.1s ease-in, opacity 0.1s ease-in;
         z-index: 100000;
-
-        &::after {
-            content: "";
-            width: 0;
-            height: 0;
-            border-left: 7px solid transparent;
-            border-right: 7px solid transparent;
-            border-bottom: 7px solid #fff;
-            position: absolute;
-            top: -0.7rem;
-            right: 1.1rem;
-        }
+        display: none;
+        animation: bottom 0.3s forwards;
     }
 
     &_button {
         font-size: 1.4rem;
+        color: #16181b;
         width: 100%;
-        padding: 0.5rem 2rem;
+        padding: 1rem 2rem;
         cursor: pointer;
         transition: 0.1s all;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
 
         &:hover {
-            background-color: #eee;
+            background-color: #f8f9fa;
         }
 
         &--red {
-            color: #fd397a;
+            color: #16181b;
         }
     }
 
@@ -162,13 +127,16 @@ $cf: #fff;
     }
 
     &_menu {
-        width: 3.6rem;
-        height: 3.6rem;
-        border-radius: 50%;
+        width: 5.2rem;
+        height: 5.2rem;
         background-color: #fff;
+        border-radius: 5px;
         position: relative;
         cursor: pointer;
-        margin-left: 1rem;
+        margin: auto 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         .fa-sort-down {
             @extend %icon;
@@ -191,11 +159,22 @@ $cf: #fff;
 }
 
 .show {
-    visibility: visible;
-    opacity: 1;
+    display: block;
 }
 
 .selected {
-    color: #fff !important;
-    border-color: #fff !important;
+    color: $cf !important;
+    background-color: #f7f7ff !important;
+}
+
+@keyframes bottom {
+    from {
+        bottom: -11.5rem;
+        opacity: 0.1;
+    }
+
+    to {
+        bottom: -10.5rem;
+        opacity: 1;
+    }
 }

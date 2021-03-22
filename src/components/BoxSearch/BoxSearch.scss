@@ -1,8 +1,8 @@
 .search {
     &_list {
         height: 20rem;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
+        padding-top: 2rem !important;
+        padding-bottom: 1rem !important;
     }
 
     &_text {
@@ -42,5 +42,9 @@
         position: absolute;
         top: 0;
         left: 0;
+    }
+
+    &_btn {
+        padding-right: 1rem;
     }
 }

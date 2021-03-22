@@ -7,7 +7,7 @@ const ListMessage = props => {
             <div className="list-message_header">
                 <div className="list-message_title">Chats</div>
                 <div className="list-message_input">
-                    <input type="text" placeholder="Search for message" />
+                    <input type="text" placeholder="Search messages" />
                 </div>
             </div>
         </div>

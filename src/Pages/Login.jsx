@@ -27,7 +27,8 @@ const Login = () => {
     useEffect(() => {
         if (registered) noficationSuccess('Register Successfully!');
 
-    }, [registered])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     if (token) {
         return <Redirect to="/" />

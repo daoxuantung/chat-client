@@ -46,9 +46,9 @@ const deleteFriend = (token, user) => {
     })
 }
 
-const getFriends = (token, user) => {
+const getFriends = (token, user, query) => {
     return axios.post(API_URL + "friends", {
-        user
+        user, query
     }, {
         headers: {
             'Authorization': token,
